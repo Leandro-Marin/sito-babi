@@ -1,0 +1,337 @@
+:root {
+    --bg-color: #FDFBF7;
+    /* Crema muy suave */
+    --text-color: #4A4A4A;
+    /* Gris oscuro para texto */
+    --accent-color: #A69B88;
+    /* Marrón/Dorado apagado para subtítulos */
+    --gold-color: #C8B79B;
+    --border-color: #D3CDC6;
+    --font-serif: 'Instrument Serif', serif;
+    --font-sans: 'Big Shoulders', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+body p {
+    color: #000;
+}
+
+/* --- TIPOGRAFÍA GENÉRICA --- */
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    text-align: center;
+    color: #000;
+}
+
+.section-container {
+    padding: 60px 25px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    background: url('tu-foto-pareja.jpg') center/cover no-repeat;
+    /* IMPORTANTE: Poner tu foto aquí */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #FFF;
+    /* Texto blanco sobre la foto */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Capa oscura opcional para que se lea mejor el texto sobre la foto */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.couple-names {
+    font-size: 4rem;
+    line-height: 0.9;
+    letter-spacing: -1px;
+    color: #FDFBF7;
+    /* Blanco crema */
+}
+
+.couple-names .ampersand {
+    font-size: 2rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    display: block;
+    margin: 10px 0;
+}
+
+.hero-date-top,
+.hero-date-bottom {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin: 10px 0;
+}
+
+/* =======================
+      INTRO / NOS CASAMOS 
+   ======================= */
+.intro h2,
+p {
+    color: #000;
+    text-align: center;
+    font-family: "Instrument Serif";
+    font-size: 1.875rem;
+    font-style: normal;
+    line-height: 140%;
+}
+
+/* =======================
+          COUNTDOWN 
+   ======================= */
+.countdown-section h2 {
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.time-box {
+    border: 1px solid var(--text-color);
+    padding: 20px 15px;
+    width: 90px;        
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.time-box span {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 40px;
+    line-height: 1;
+}
+
+.label {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.date-text {
+    font-style: italic;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: #000;
+    margin-top: 48px
+}
+
+/* =======================
+          CEREMONIA 
+   ======================= */
+.ceremony h2{
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+   .timeline {
+    position: relative;
+    padding-left: 20px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+/* Línea vertical */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 29px;
+    /* Ajustar según tamaño icono */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #ccc;
+    z-index: 0;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-circle {
+    width: 60px;
+    /* Círculos más grandes para mobile */
+    height: 60px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.timeline-item .content {
+    padding-top: 5px;
+}
+
+.timeline-item .time {
+    background: #8B7D6B;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 2px;
+    margin-right: 8px;
+}
+
+.timeline-item .event-name {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--gold-color);
+}
+
+/* --- FORM & FAQ --- */
+details {
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    text-align: left;
+    background: #fff;
+    padding: 15px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    /* Ocultar triángulo default */
+    display: flex;
+    justify-content: space-between;
+}
+
+summary::after {
+    content: '+';
+}
+
+details[open] summary::after {
+    content: '-';
+}
+
+/* Estilos de formulario */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    background: #f4f4f4;
+    font-family: var(--font-sans);
+}
+
+.btn-submit,
+.btn-outline {
+    display: inline-block;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #333;
+    color: #333;
+    background: transparent;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: #8B7D6B;
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #7A7063;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+footer h3 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    color: #fff;
+}
