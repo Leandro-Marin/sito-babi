@@ -1,12 +1,9 @@
 :root {
-    --bg-color: #FDFBF7;
-    /* Crema muy suave */
-    --text-color: #4A4A4A;
-    /* Gris oscuro para texto */
-    --accent-color: #A69B88;
-    /* Marrón/Dorado apagado para subtítulos */
-    --gold-color: #C8B79B;
-    --border-color: #D3CDC6;
+    --bg-color: #F7F1E1;
+    --text-color: #181617;
+    --gold-color: #BFB08C;
+    --accent-color: #9C8E76;
+    
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Big Shoulders', sans-serif;
 }
@@ -26,17 +23,7 @@ body {
 }
 
 body p {
-    color: #000;
-}
-
-/* --- TIPOGRAFÍA GENÉRICA --- */
-h1,
-h2,
-h3 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    text-align: center;
-    color: #000;
+    color: var(--text-color);
 }
 
 .section-container {
@@ -51,7 +38,7 @@ h3 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--accent-color);
+    color: var(--gold-color);
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -60,63 +47,37 @@ h3 {
     font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 30px;
-    color: #333;
+    color: var(--text-color);
 }
 
-/* --- HERO SECTION --- */
+/* =======================
+            HERO 
+   ======================= */
 .hero {
     height: 100vh;
-    background: url('tu-foto-pareja.jpg') center/cover no-repeat;
-    /* IMPORTANTE: Poner tu foto aquí */
+    /* Ocupa toda la altura de la pantalla */
+    min-height: 600px;
+    /* Asegura un tamaño mínimo en pantallas pequeñas */
+    background: url('../src/foto-hero.webp') no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    color: #FFF;
-    /* Texto blanco sobre la foto */
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Capa oscura opcional para que se lea mejor el texto sobre la foto */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.hero-content {
+.couple-names-mobile {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
     position: relative;
-    z-index: 2;
-    text-align: center;
+    top: -100px;
 }
 
-.couple-names {
-    font-size: 4rem;
-    line-height: 0.9;
-    letter-spacing: -1px;
-    color: #FDFBF7;
-    /* Blanco crema */
-}
-
-.couple-names .ampersand {
-    font-size: 2rem;
-    font-style: italic;
-    font-family: var(--font-serif);
-    display: block;
-    margin: 10px 0;
-}
-
-.hero-date-top,
-.hero-date-bottom {
-    display: block;
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    margin: 10px 0;
+.couple-names-desktop {
+    display: none;
 }
 
 /* =======================
@@ -124,7 +85,7 @@ h3 {
    ======================= */
 .intro h2,
 p {
-    color: #000;
+    color: var(--text-color);
     text-align: center;
     font-family: "Instrument Serif";
     font-size: 1.875rem;
@@ -135,8 +96,13 @@ p {
 /* =======================
           COUNTDOWN 
    ======================= */
+.countdown-section {
+    background-color: var(--accent-color);
+}
+
 .countdown-section h2 {
     font-family: var(--font-sans);
+    color: var(--bg-color);
     font-size: 1.375rem;
     font-style: normal;
     font-weight: 700;
@@ -151,9 +117,10 @@ p {
 }
 
 .time-box {
+    background-color: var(--bg-color);
     border: 1px solid var(--text-color);
     padding: 20px 15px;
-    width: 90px;        
+    width: 90px;
     border-radius: 4px;
     margin-bottom: 8px;
 }
@@ -161,12 +128,13 @@ p {
 .time-box span {
     display: block;
     font-family: var(--font-serif);
-    font-size: 40px;
+    font-size: 2.5rem;
     line-height: 1;
 }
 
 .label {
     font-family: var(--font-sans);
+    color: var(--text-color);
     font-size: 1.25rem;
     text-transform: uppercase;
     margin-top: 16px;
@@ -176,15 +144,15 @@ p {
 .date-text {
     font-style: italic;
     font-family: var(--font-serif);
-    font-size: 18px;
-    color: #000;
+    font-size: 1.2rem;
+    color: var(--text-color);
     margin-top: 48px
 }
 
 /* =======================
           CEREMONIA 
    ======================= */
-.ceremony h2{
+.ceremony h2 {
     font-family: var(--font-sans);
     font-size: 1.375rem;
     font-style: normal;
@@ -192,146 +160,732 @@ p {
     line-height: normal;
 }
 
-   .timeline {
+.ceremony-image {
     position: relative;
-    padding-left: 20px;
-    text-align: left;
-    margin-top: 40px;
+    object-fit: cover;
+    width: 100%;
+    /* Asegura que ocupe el ancho disponible */
+    max-width: 800px;
+    /* Opcional: pon un límite razonable para pantallas gigantes */
+    margin: 0 auto;
+    /* Centra la imagen */
 }
 
-/* Línea vertical */
+.ceremony-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ceremony a {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border: 1px solid var(--text-color);
+    border-radius: 100px;
+    padding: 10px 20px;
+    transition: border-color 0.3s;
+}
+
+/* Efecto Hover para el botón "Cómo llegar" */
+.ceremony a {
+    transition: all 0.3s ease;
+    /* Suaviza el cambio */
+}
+
+.ceremony a:hover {
+    background-color: var(--text-color);
+    /* Fondo oscuro */
+    color: #fff;
+    /* Texto blanco */
+    border-color: var(--text-color);
+    /* Borde oscuro */
+    transform: translateY(-3px);
+    /* Se eleva un poco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+/* =======================
+          TIMELINE
+   ======================= */
+.timeline-section {
+    text-align: center;
+    /* Centra el título de la sección */
+}
+
+.timeline-section h2 {
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra todo el contenido en móviles */
+}
+
+/* Línea vertical central */
 .timeline::before {
     content: '';
     position: absolute;
-    left: 29px;
-    /* Ajustar según tamaño icono */
+    left: 30px;
+    /* Centrado con el icono de 60px */
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #ccc;
+    background-color: var(--text-color);
+    /* Línea sólida y oscura */
     z-index: 0;
 }
 
 .timeline-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    /* Más espacio entre eventos */
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
+/* Círculo del icono */
 .icon-circle {
     width: 60px;
-    /* Círculos más grandes para mobile */
     height: 60px;
-    background: #fff;
-    border: 1px solid #333;
+    background: var(--bg-color);
+    /* Color de fondo de la web para "cortar" la línea */
+    border: 1px solid var(--text-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    /* Iconos un poco más grandes */
     flex-shrink: 0;
-    margin-right: 20px;
+    margin-right: 25px;
+    z-index: 2;
+    /* Por encima de la línea */
 }
 
+/* Contenedor de texto */
 .timeline-item .content {
-    padding-top: 5px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* Estilo de la Hora */
 .timeline-item .time {
-    background: #8B7D6B;
-    color: #fff;
-    padding: 2px 8px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    border-radius: 2px;
-    margin-right: 8px;
+    background: transparent;
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+    padding: 4px 8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: inline-block;
 }
 
+/* Título del evento */
 .timeline-item .event-name {
-    font-family: var(--font-serif);
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-family: var(--font-sans);
+    /* Fuente elegante */
+    font-size: 1.5rem;
+    /* Más grande */
     color: var(--gold-color);
+    margin-left: 0px;
+    font-weight: 400;
+    display: inline-block;
 }
 
-/* --- FORM & FAQ --- */
+.timeline-item p {
+    font-size: 1.2rem!important;
+}
+
+/* Contenedor de hora y título en la misma línea */
+.timeline-header {
+    display: flex;
+    align-items: baseline;
+    /* Esto es lo que alinea los textos a la misma altura base */
+    gap: 12px;
+    /* Controla la separación entre la hora y el nombre */
+    margin-bottom: 0px;
+}
+
+
+/* Descripción */
+.timeline-item p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* =======================
+          FORM & FAQ
+   ======================= */
+.faq h2 {
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
 details {
     border: 1px solid var(--border-color);
+    border-radius: 4px;
     margin-bottom: 10px;
     text-align: left;
     background: #fff;
     padding: 15px;
 }
 
+.faq-item p {
+    margin-top: 10px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.icon-circle {
+    background-color: #fff;
+}
+/* Estilo base del item */
+details.faq-item {
+    border: 1px solid var(--text-color);
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
 summary {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     list-style: none;
-    /* Ocultar triángulo default */
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
 }
 
+/* Icono rotatorio */
 summary::after {
     content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 details[open] summary::after {
-    content: '-';
+    transform: rotate(45deg);
+    /* Efecto X */
 }
 
-/* Estilos de formulario */
+/* --- ANIMACIÓN FLUIDA (GRID TRICK) --- */
+.faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    /* Altura inicial 0 */
+    transition: grid-template-rows 0.4s ease-out;
+    /* Animación de la altura */
+}
+
+details[open] .faq-content {
+    grid-template-rows: 1fr;
+    /* Altura final automática */
+}
+
+.faq-content p {
+    overflow: hidden;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s, padding 0.3s ease;
+}
+
+details[open] .faq-content p {
+    padding-bottom: 15px;
+    /* Espacio abajo cuando está abierto */
+    opacity: 1;
+}
+
+
+/* =======================
+   FORMULARIO RSVP
+   ======================= */
+.rsvp h2 {
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.rsvp {
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Contenedor principal del formulario (el borde exterior) */
+.rsvp-form {
+    background-color: #FFFFFF !important;
+    border: 1px solid var(--text-color);
+    /* Borde oscuro fino */
+    padding: 30px;
+    border-radius: 4px;
+    /* Bordes ligeramente redondeados */
+    background-color: #FDFBF7;
+    /* Fondo crema claro igual que la imagen */
+    text-align: left;
+    /* Alineación a la izquierda para todo el contenido */
+}
+
+/* Etiquetas (Labels) */
+.rsvp-form label {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    /* Gris oscuro / Marrón */
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-weight: 400;
+    /* No negrita, estilo editorial */
+}
+
+/* Inputs de texto y Textarea */
 input[type="text"],
 input[type="email"],
 textarea {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    background: #f4f4f4;
-    font-family: var(--font-sans);
+    padding: 12px;
+    margin-bottom: 5px;
+    /* Espacio pequeño abajo */
+    border: 1px solid #D3CDC6;
+    /* Borde beige suave */
+    background: #F4F1EA;
+    /* Fondo beige grisáceo */
+    font-family: var(--font-serif);
+    /* Fuente Serif en el placeholder también */
+    font-size: 1.2rem;
+    color: #555;
+    border-radius: 4px;
 }
 
-.btn-submit,
-.btn-outline {
-    display: inline-block;
-    padding: 15px 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
+/* Placeholder color */
+::placeholder {
+    color: #A69B88;
+    opacity: 1;
+}
+
+/* Radio Buttons y Checkboxes (Personalización básica para alineación) */
+.radio-group,
+.checkbox-grid {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    /* Espacio entre opciones */
+}
+
+.radio-group label,
+.checkbox-grid label {
+    margin-top: 0;
+    /* Reset del margen de label general */
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
-.btn-outline {
-    border: 1px solid #333;
-    color: #333;
-    background: transparent;
-    border-radius: 30px;
+/* Estilo específico para la sección de alergias */
+.allergies-section p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: #4A4A4A;
+    margin-bottom: 10px;
     margin-top: 20px;
+    text-align: left;
+    /* Asegurar alineación izquierda */
 }
 
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas como en la imagen */
+    gap: 8px;
+}
+
+/* Botón de Enviar */
 .btn-submit {
     background-color: #8B7D6B;
+    /* Marrón topo */
     color: white;
     border: none;
     width: 100%;
-    margin-top: 20px;
+    padding: 15px;
+    margin-top: 30px;
+    font-family: var(--font-sans);
+    /* Sans serif para el botón (fuerza y claridad) */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Footer */
+.btn-submit:hover {
+    background-color: #7A7063;
+}
+
+/* =======================
+          FOOTER 
+   ======================= */
 footer {
     background-color: #7A7063;
     color: #fff;
-    padding: 60px 20px;
+    padding: 40px 20px 16px 20px;
     text-align: center;
+    margin-top: 64px;
 }
 
-footer h3 {
-    font-size: 2.5rem;
-    margin: 10px 0;
-    color: #fff;
+.footer-content p {
+    color: var(--border-color);
+    margin-top: 24px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+}
+
+.firma p {
+    padding-top: 40px;
+    font-size: 0.8rem;
+}
+
+.footer-names-mobile {
+    display: block;
+    width: 75%;
+    margin: 20px auto;
+}
+
+.footer-names-desktop {
+    display: none;
+}
+
+
+
+/* =========================================
+        ESTILOS ESPECÍFICOS PARA TABLET
+   ========================================= */
+@media (width >=768px) {
+
+    /* Imagen Hero: Responsive y Proporcional */
+    .couple-names-mobile {
+        display: none;
+    }
+
+    .couple-names-desktop {
+        display: block;
+
+        /* Crecimiento proporcional */
+        width: 80vw;
+        /* Ocupará el 80% del ancho de la ventana */
+        max-width: 750px;
+        /* Pero nunca pasará de 750px */
+        min-width: 400px;
+        /* Ni será más pequeña de 400px */
+
+        height: auto;
+        /* Mantiene la proporción */
+        margin: 0 auto;
+        position: relative;
+        top: -80px;
+    }
+
+    /* Contenedor general */
+    .section-container {
+        max-width: 720px;
+        padding: 50px 30px;
+    }
+
+    .ceremony-image {
+        width: 80vw;
+        /* La imagen ocupará el 80% del ancho de la ventana */
+        max-width: 100%;
+        /* Tope máximo para que no se pixele en monitores 4K */
+        height: auto;
+        /* Mantiene la proporción */
+    }
+
+    /* --- TIMELINE HORIZONTAL (TABLET) --- */
+    .timeline-section {
+        overflow-x: auto;
+        /* Permite scroll horizontal si la pantalla es pequeña pero tablet */
+        padding-bottom: 20px;
+    }
+
+    .timeline {
+        display: flex;
+        /* Cambia de columna a fila */
+        flex-direction: row;
+        justify-content: space-between;
+        /* Distribuye los eventos a lo ancho */
+        align-items: flex-start;
+        margin-top: 60px;
+        padding-left: 0;
+        max-width: 100%;
+        /* Usa todo el ancho disponible */
+        position: relative;
+    }
+
+    /* Línea Horizontal Central */
+    .timeline::before {
+        width: 100%;
+        /* La línea ahora ocupa todo el ancho */
+        height: 1px;
+        /* Es finita verticalmente */
+        top: 30px;
+        /* Se posiciona en el centro del icono (60px / 2) */
+        left: 0;
+        bottom: auto;
+        /* Anulamos bottom */
+        background-color: var(--text-color);
+        z-index: 0;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        /* Icono arriba, texto abajo */
+        align-items: center;
+        /* Centrado horizontalmente */
+        text-align: center;
+        margin-bottom: 0;
+        /* Quitamos margen de abajo */
+        padding: 0 15px;
+        /* Espacio lateral entre items */
+        flex: 1;
+        /* Todos los items ocupan el mismo ancho */
+        position: relative;
+    }
+
+    .icon-circle {
+        margin-right: 0;
+        /* Quitamos margen derecho porque ahora está centrado */
+        margin-bottom: 15px;
+        /* Espacio entre icono y texto */
+        z-index: 2;
+        /* Importante para tapar la línea */
+        position: relative;
+        /* Asegura z-index */
+    }
+
+    /* Contenedor de texto centrado */
+    .timeline-item .content {
+        align-items: center;
+        /* Centra el contenido flex */
+        width: 100%;
+    }
+
+    .timeline-header {
+        flex-direction: column;
+        /* Hora arriba, nombre abajo */
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 8px;
+    }
+
+    .timeline-item .event-name {
+        font-size: 1.3rem;
+        /* Ajuste de tamaño para que quepa bien */
+    }
+
+    .timeline-item p {
+        text-align: center;
+        /* Texto descriptivo centrado */
+        font-size: 1rem;
+    }
+
+    .rsvp-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas iguales */
+        gap: 15px;
+        padding: 30px;
+        text-align: left;
+        /* Alinea textos a la izquierda */
+    }
+
+    /* Esta clase asegura que label e input vayan uno encima del otro */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .checkbox-grid {
+        margin-bottom: 48px;
+        }
+    
+
+    /* Elementos que deben ocupar todo el ancho (las 2 columnas) */
+    .full-width,
+    .allergies-section,
+    .btn-submit {
+        grid-column: 1 / -1;
+    }
+
+    /* Ajuste visual para labels */
+    .rsvp-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    /* Formulario: 2 columnas para checkboxes */
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    /* Footer: Imagen Tablet Responsive */
+    .footer-names-mobile {
+        display: none;
+    }
+
+    .footer-names-desktop {
+        display: block;
+        width: 80vw;
+        max-width: 800px;
+        min-width: 380px;
+        height: auto;
+        margin: 25px auto;
+    }
+
+    .footer-content p {
+        margin-top: 24px;
+        font-size: 1.5rem;
+    }
+
+    .firma p {
+        padding-top: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA DESKTOP
+   (Pantallas grandes, a partir de 1025px)
+   ========================================= */
+@media (width >=1024px) {
+
+    .couple-names-mobile {
+        display: none;
+    }
+
+    .couple-names-desktop {
+        display: block;
+        /* Crecimiento proporcional controlado */
+        width: 80vw;
+        /* 60% del ancho de la pantalla */
+        max-width: 1200px;
+        /* Tope máximo para pantallas muy grandes */
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* Contenedor más ancho */
+    .section-container {
+        max-width: 1000px;
+        padding: 80px 20px;
+    }
+
+    /* --- CEREMONIA --- */
+    .ceremony {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+
+    /* --- TIMELINE (Vertical pero centrado) --- */
+    /* Mantenemos la estructura vertical que funciona bien, solo ajustamos márgenes */
+    .timeline {
+        width: 100%;
+
+        margin: 60px auto;
+    }
+
+    /* --- FORMULARIO RSVP (Estructura sólida) --- */
+    .rsvp {
+        max-width: 700px;
+    }
+
+    .rsvp-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas */
+        gap: 15px;
+        padding: 50px;
+    }
+
+    /* Elementos que ocupan todo el ancho */
+    .rsvp-form h2,
+    .rsvp-form label[for="message"],
+    .rsvp-form textarea,
+    .rsvp-form .btn-submit,
+    .rsvp-form .allergies-section {
+        grid-column: 1 / -1;
+        /* Ocupan las 2 columnas */
+    }
+
+    /* Checkboxes en 3 columnas */
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    /* Footer: Imagen Desktop Responsive */
+    .footer-names-mobile {
+        display: none;
+    }
+
+    .footer-names-desktop {
+        display: block;
+        width: 90vw;
+        max-width: 1200px;
+        height: auto;
+        margin: 30px auto 16px auto;
+    }
 }
