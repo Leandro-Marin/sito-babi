@@ -19,6 +19,39 @@
 
 <body>
 
+    <!-- OVERLAY PREMIUM REALISTA -->
+    <div id="welcome-overlay">
+        <div class="envelope-wrapper">
+            <div class="envelope-container" id="envelope">
+                <!-- Sombra dinámica debajo del sobre -->
+                <div class="envelope-shadow"></div>
+
+                <div class="envelope-back"></div>
+
+                <div class="envelope-paper">
+                    <div class="paper-texture"></div> <!-- Nueva capa de textura -->
+                    <div class="paper-content">
+                        <p class="names">Carmen & Raúl</p>
+                        <div class="separator-line"></div>
+                        <p class="date">16.05.2026</p>
+                    </div>
+                </div>
+
+                <div class="envelope-flap"></div>
+                <div class="envelope-front"></div>
+
+                <!-- Sello de lacre mejorado -->
+                <div class="wax-seal">
+                    <div class="wax-shine"></div>
+                    <span>C&R</span>
+                </div>
+            </div>
+        </div>
+        <p class="tap-instruction">Toca el sobre para descubrir</p>
+    </div>
+
+
+
     <!-- HERO SECTION -->
     <header class="hero">
         <div class="hero-content">
@@ -92,6 +125,10 @@
 
         <a href="https://maps.app.goo.gl/Lw3j5jGocQPUiJJq7" class="btn-outline" target="_blank">Cómo llegar!</a>
     </section>
+
+    <!-- SEPARADOR -->
+    <img src="src/separador.svg" alt="elemento decorativo para separar secciones" class="section-separator"
+        aria-hidden="true">
 
     <!-- TIMELINE -->
     <section class="section-container timeline-section">
@@ -173,6 +210,11 @@
         </div>
     </section>
 
+    <!-- SEPARADOR -->
+    <img src="src/separador.svg" alt="elemento decorativo para separar secciones"
+        class="section-separator section-separator--no-padding" aria-hidden="true">
+
+
     <!-- FAQ (ACORDEÓN) -->
     <section class="section-container faq">
         <h2 class="section-subtitle">PREGUNTAS FRECUENTES</h2>
@@ -180,32 +222,58 @@
         <details class="faq-item">
             <summary>¿Puedo llevar acompañante?</summary>
             <div class="faq-content"> <!-- Nuevo envoltorio -->
-                <p>Por favor consulta tu invitación personalizada.</p>
+                <p>Cada invitación incluye un +1. Por favor, indícalo en el formulario con su nombre y apellido. Si sois
+                    más de 1 o una familia, no hay problema, añadidlo en el formulario.</p>
             </div>
         </details>
 
         <details class="faq-item">
-            <summary>¿Habrá parking disponible?</summary>
-            <div class="faq-content">
-                <p>Sí, el recinto cuenta con aparcamiento gratuito.</p>
+            <summary>¿Cuál es el código de vestimenta?</summary>
+            <div class="faq-content"> <!-- Nuevo envoltorio -->
+                <p>El dress code es de ceremonia. Únicamente pedimos que nadie vaya vestido de blanco.</p>
             </div>
         </details>
 
         <details class="faq-item">
-            <summary>¿Qué código de vestimenta debo seguir?</summary>
+            <summary>¿Hay aparcamiento disponible en el lugar de la ceremonia?</summary>
             <div class="faq-content">
-                <p>Etiqueta formal / Traje oscuro.</p>
+                <p>Hay algunas zonas de aparcamiento en las inmediaciones, aunque son escasas y pueden estar ocupadas.
+                    Como alternativa, se puede aparcar en la Plaza del Mercado, situada a unos 60 metros de la
+                    Colegiata.Aun así, recomendamos llegar con tiempo para evitar prisas.</p>
             </div>
         </details>
 
         <details class="faq-item">
-            <summary>¿Puedo tomar fotos durante la ceremonia?</summary>
+            <summary>¿Habrá servicio de autobuses?</summary>
             <div class="faq-content">
-                <p>Preferimos una ceremonia desconectada, gracias.</p>
+                <p>Sí. A partir de las 13:45 h habrá autobuses disponibles para los invitados desde la Fuente de las
+                    Islas Canarias (calle Gáldar) hasta el Resort La Factoría, donde continuará la celebración. Y a las
+                    00:00 h habrá autobuses de regreso desde el Resort La Factoría al centro de Calatayud.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>¿La boda se celebra en interior o exterior?</summary>
+            <div class="faq-content">
+                <p>El lunch y el banquete se celebrarán en el Resort La Factoría, combinando espacios interiores y
+                    exteriores según el momento del día y el clima. La ceremonia es en la Colegiata Mayor de Santa
+                    María, que es interior, y no depende del clima.</p>
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>¿Cuándo y cómo debo confirmar mi asistencia?</summary>
+            <div class="faq-content">
+                <p>Para confirmar tu asistencia, es obligatorio rellenar y enviar el formulario que encontrarás al final
+                    de esta página. Por favor, hazlo antes del 15 de abril para que podamos organizar todo
+                    correctamente.</p>
             </div>
         </details>
     </section>
 
+    <!-- SEPARADOR -->
+    <img src="src/separador.svg" alt="elemento decorativo para separar secciones" class="section-separator"
+        aria-hidden="true">
 
     <!-- FORMULARIO RSVP -->
     <section class="section-container rsvp">
@@ -298,6 +366,27 @@
         </div>
     </footer>
 
+    <!-- SCRIPT ANIMACIÓN SOBRE DE BIENVENIDA -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const envelope = document.getElementById('envelope');
+            const overlay = document.getElementById('welcome-overlay');
+
+            envelope.addEventListener('click', () => {
+                // 1. Activar la secuencia
+                envelope.classList.add('open');
+
+                // 2. Esperar al momento del "impacto" visual (zoom máximo)
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Reactivar scroll
+                }, 1200);
+            });
+        });
+    </script>
+
+
+
     <!-- SCRIPT SIMPLE CUENTA ATRÁS -->
     <script>
         // Fecha objetivo: 16 Mayo 2026
@@ -325,11 +414,10 @@
     </script>
 
     <!-- SCRIPT FORMULARIO GOOGLE SHEETS -->
-    <!-- Pon esto JUSTO ANTES de cerrar </body> al final de todo -->
     <script>
         console.log("1. El script ha cargado correctamente");
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBYXqaf5I6n36XAcf7DbUgInGWcx17xUVPzPdWbg-jLhZjGDHHANwxaTJV3yGtO_yC1Q/exec'; // <--- OJO: ¡Pega tu URL aquí!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBYXqaf5I6n36XAcf7DbUgInGWcx17xUVPzPdWbg-jLhZjGDHHANwxaTJV3yGtO_yC1Q/exec';
         const form = document.forms['submit-to-google-sheet'];
 
         if (form) {
@@ -365,9 +453,6 @@
             console.error("ERROR GRAVE: No encuentro el formulario. Revisa que <form> tenga name='submit-to-google-sheet'");
         }
     </script>
-
-
-
 </body>
 
 </html>
