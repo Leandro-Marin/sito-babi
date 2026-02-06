@@ -386,19 +386,26 @@ p {
 }
 
 .countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    display: grid;
+    /* Esto fuerza exactamente 2 columnas del mismo ancho */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; /* Espacio entre filas y columnas */
+    justify-items: center; /* Centra las cajas en sus huecos */
+    max-width: 350px; /* Evita que se estiren demasiado en móvil */
+    margin: 0 auto 30px auto; /* Centrado en la pantalla */
 }
 
 .time-box {
     background-color: var(--bg-color);
     border: 1px solid var(--text-color);
-    padding: 20px 15px;
+    padding: 20px 0; /* Ajuste padding para que no se desborde */
     width: 90px;
+    height: 90px; /* Hacemos la caja cuadrada para mejor simetría */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 5px; /* Reducimos margen porque ya tenemos gap */
 }
 
 .time-box span {
@@ -911,6 +918,14 @@ footer {
     .section-container {
         max-width: 720px;
         padding: 50px 30px;
+    }
+
+    .countdown-timer {
+        display: flex; /* Vuelve a ponerlos en fila */
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        max-width: none; /* Quitamos el límite de ancho del móvil */
     }
 
     .ceremony-image {
