@@ -3,9 +3,10 @@
     --text-color: #181617;
     --gold-color: #BFB08C;
     --accent-color: #9C8E76;
-
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Big Shoulders', sans-serif;
+
+    interpolate-size: allow-keywords;
 }
 
 * {
@@ -32,8 +33,6 @@ body p {
     margin: 0 auto;
     text-align: center;
 }
-
-
 
 .section-subtitle {
     font-family: var(--font-sans);
@@ -590,7 +589,7 @@ p {
 }
 
 .timeline-item p {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem!important;
 }
 
 /* Contenedor de hora y título en la misma línea */
@@ -615,7 +614,7 @@ p {
 }
 
 /* =======================
-          FORM & FAQ
+           FAQ
    ======================= */
 .faq h2 {
     font-family: var(--font-sans);
@@ -681,31 +680,20 @@ details[open] summary::after {
     /* Efecto X */
 }
 
-/* --- ANIMACIÓN FLUIDA (GRID TRICK) --- */
-.faq-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    /* Altura inicial 0 */
-    transition: grid-template-rows 0.4s ease-out;
-    /* Animación de la altura */
-}
-
-details[open] .faq-content {
-    grid-template-rows: 1fr;
-    /* Altura final automática */
-}
-
-.faq-content p {
-    overflow: hidden;
-    margin: 0;
+/* --- ANIMACIÓN FLUIDA --- */
+/* El pseudo-elemento nativo que envuelve el contenido */
+details::details-content {
     opacity: 0;
-    transition: opacity 0.3s ease 0.1s, padding 0.3s ease;
+    height: 0;
+    overflow: hidden;
+    /* transition-behavior: allow-discrete es clave para que espere al cerrar */
+    transition: height 0.4s ease, opacity 0.4s ease, content-visibility 0.4s allow-discrete;
 }
 
-details[open] .faq-content p {
-    padding-bottom: 15px;
-    /* Espacio abajo cuando está abierto */
+/* Estado abierto */
+details[open]::details-content {
     opacity: 1;
+    height: auto;
 }
 
 
@@ -895,9 +883,6 @@ footer {
         ESTILOS ESPECÍFICOS PARA TABLET
    ========================================= */
 @media (width >=48rem) {
-    .section-separator--no-padding {
-        margin-top: 45px;
-    }
 
     /* Imagen Hero: Responsive y Proporcional */
     .couple-names-mobile {
@@ -1044,8 +1029,8 @@ footer {
 
     .checkbox-grid {
         margin-bottom: 48px;
-    }
-
+        }
+    
 
     /* Elementos que deben ocupar todo el ancho (las 2 columnas) */
     .full-width,
@@ -1097,11 +1082,7 @@ footer {
    ESTILOS ESPECÍFICOS PARA DESKTOP
    (Pantallas grandes, a partir de 1025px)
    ========================================= */
-@media (width >=80rem) {
-
-    .section-separator--no-padding {
-        margin-top: 0px;
-    }
+@media (width >=80rem)  {
 
     .couple-names-mobile {
         display: none;
