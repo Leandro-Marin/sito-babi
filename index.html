@@ -19,36 +19,34 @@
 
 <body>
 
-    <!-- OVERLAY PREMIUM REALISTA -->
-    <div id="welcome-overlay">
-        <div class="envelope-wrapper">
-            <div class="envelope-container" id="envelope">
-                <!-- Sombra dinámica debajo del sobre -->
-                <div class="envelope-shadow"></div>
+    <!-- LOADING PAGE -->
+    <div id="loading-screen" class="loading-screen">
+        <!-- Lazo superior -->
+        <div class="ribbon ribbon-top"></div>
+        <!-- Lazo derecho -->
+        <div class="ribbon ribbon-right"></div>
+        <!-- Lazo inferior -->
+        <div class="ribbon ribbon-bottom"></div>
+        <!-- Lazo izquierdo -->
+        <div class="ribbon ribbon-left"></div>
 
-                <div class="envelope-back"></div>
-
-                <div class="envelope-paper">
-                    <div class="paper-texture"></div> <!-- Nueva capa de textura -->
-                    <div class="paper-content">
-                        <p class="names">Carmen & Raúl</p>
-                        <div class="separator-line"></div>
-                        <p class="date">16.05.2026</p>
-                    </div>
-                </div>
-
-                <div class="envelope-flap"></div>
-                <div class="envelope-front"></div>
-
-                <!-- Sello de lacre mejorado -->
-                <div class="wax-seal">
-                    <div class="wax-shine"></div>
-                    <span>C&R</span>
-                </div>
-            </div>
+        <!-- Sello de lacre en el centro -->
+        <div class="wax-seal" id="wax-seal">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Círculo exterior del sello -->
+                <circle cx="100" cy="100" r="90" fill="#8B4513" stroke="#6B3410" stroke-width="3" />
+                <!-- Círculo interior -->
+                <circle cx="100" cy="100" r="75" fill="#A0522D" opacity="0.8" />
+                <!-- Textura del sello -->
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#6B3410" stroke-width="2" />
+                <!-- Iniciales C&R -->
+                <text x="100" y="110" font-family="var(--font-serif)" font-size="48" font-weight="bold" fill="#F7F1E1"
+                    text-anchor="middle">C&R</text>
+            </svg>
+            <p class="seal-text">Haz click para abrir</p>
         </div>
-        <p class="tap-instruction">Toca el sobre para descubrir</p>
     </div>
+
 
     <!-- HERO SECTION -->
     <header class="hero">
@@ -359,24 +357,30 @@
         </div>
     </footer>
 
-    <!-- SCRIPT ANIMACIÓN SOBRE DE BIENVENIDA -->
+    <!-- SCRIPT ANIMACIÓN LOAGIND PAGE -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const envelope = document.getElementById('envelope');
-            const overlay = document.getElementById('welcome-overlay');
+        // Funcionalidad de la loading page
+        document.addEventListener('DOMContentLoaded', function () {
+            const loadingScreen = document.getElementById('loading-screen');
+            const waxSeal = document.getElementById('wax-seal');
 
-            envelope.addEventListener('click', () => {
-                // 1. Activar la secuencia
-                envelope.classList.add('open');
+            // Prevenir scroll mientras está la loading screen
+            document.body.style.overflow = 'hidden';
 
-                // 2. Esperar al momento del "impacto" visual (zoom máximo)
-                setTimeout(() => {
-                    overlay.classList.add('hidden');
-                    document.body.style.overflow = 'auto'; // Reactivar scroll
+            // Evento de click en el sello
+            waxSeal.addEventListener('click', function () {
+                // Añadir clase para iniciar animación
+                loadingScreen.classList.add('clicked');
+
+                // Después de la animación, ocultar completamente
+                setTimeout(function () {
+                    loadingScreen.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
                 }, 1200);
             });
         });
     </script>
+
 
     <!-- SCRIPT SIMPLE CUENTA ATRÁS -->
     <script>
