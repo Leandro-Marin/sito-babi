@@ -3,9 +3,11 @@
     --text-color: #181617;
     --gold-color: #BFB08C;
     --accent-color: #9C8E76;
+    --accent-color-dos: #debb73;
+    --ribbon-color-one: #ede1c4;
+    --ribbon-color-two: #d6c7a3;
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Big Shoulders', sans-serif;
-
     interpolate-size: allow-keywords;
 }
 
@@ -39,7 +41,7 @@ body p {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--gold-color);
+    color: var(--accent-color-dos);
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -56,191 +58,286 @@ body p {
    ======================= */
 
 .loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--bg-color);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /* AÑADIDO: Color base inmediato mientras carga la imagen */
+    background-color: var(--bg-color);
+    /* O usa un color hexadecimal si prefieres, ej: #F7F1E1 */
+
+    background-image: url('../src/papel-fondo-hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Aseguramos que la transición de salida sea suave */
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* Lazos que envuelven la pantalla */
 .ribbon {
-  position: absolute;
-  background: linear-gradient(135deg, var(--gold-color), var(--accent-color));
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  animation: ribbonGlow 2s ease-in-out infinite;
+    position: absolute;
+    background: linear-gradient(135deg, var(--ribbon-color-one), var(--ribbon-color-two));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /*animation: ribbonGlow 2s ease-in-out infinite;*/
 }
 
 .ribbon-top {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  transform-origin: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    transform-origin: center;
 }
 
 .ribbon-bottom {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  transform-origin: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    transform-origin: center;
 }
 
 .ribbon-left {
-  left: 0;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  transform-origin: center;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    transform-origin: center;
 }
 
 .ribbon-right {
-  right: 0;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  transform-origin: center;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    transform-origin: center;
 }
 
 /* Animación de brillo del lazo */
 @keyframes ribbonGlow {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.2);
+    }
 }
 
 /* Sello de lacre */
 .wax-seal {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  animation: sealPulse 2s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: sealPulse 2s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
 }
 
 .wax-seal:hover {
-  transform: scale(1.1);
-}
-
-.wax-seal svg {
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+    transform: scale(1.1);
 }
 
 .seal-text {
-  position: absolute;
-  bottom: -40px;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  color: var(--text-color);
-  white-space: nowrap;
-  animation: fadeInOut 2s ease-in-out infinite;
+    position: absolute;
+    bottom: -40px;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    animation: fadeInOut 2s ease-in-out infinite;
 }
 
 /* Animación de pulso del sello */
 @keyframes sealPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 /* Animación de texto */
 @keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Animaciones de desaparición cuando se hace click */
 .loading-screen.clicked .ribbon-top {
-  animation: ribbonSlideOut 0.8s ease forwards;
-  animation-delay: 0s;
+    animation: ribbonSlideOut 0.8s ease forwards;
+    animation-delay: 0s;
 }
 
 .loading-screen.clicked .ribbon-bottom {
-  animation: ribbonSlideOut 0.8s ease forwards;
-  animation-delay: 0.1s;
+    animation: ribbonSlideOut 0.8s ease forwards;
+    animation-delay: 0.1s;
 }
 
 .loading-screen.clicked .ribbon-left {
-  animation: ribbonSlideOutVertical 0.8s ease forwards;
-  animation-delay: 0.2s;
+    animation: ribbonSlideOutVertical 0.8s ease forwards;
+    animation-delay: 0.2s;
 }
 
 .loading-screen.clicked .ribbon-right {
-  animation: ribbonSlideOutVertical 0.8s ease forwards;
-  animation-delay: 0.3s;
+    animation: ribbonSlideOutVertical 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
 
 .loading-screen.clicked .wax-seal {
-  animation: sealBreak 0.8s ease forwards;
+    animation: sealBreak 0.8s ease forwards;
 }
 
 /* Animación de lazos horizontales saliendo */
 @keyframes ribbonSlideOut {
-  0% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(0);
-    opacity: 0;
-  }
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
 }
 
 /* Animación de lazos verticales saliendo */
 @keyframes ribbonSlideOutVertical {
-  0% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
+    0% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
 }
 
 /* Animación del sello rompiéndose */
 @keyframes sealBreak {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.3) rotate(10deg);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(0) rotate(180deg);
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3) rotate(10deg);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* =======================
+   BOTÓN AUDIO (FINAL)
+======================= */
+.audio-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2147483647;
+    /* Máximo valor posible para asegurar visibilidad */
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Ayuda a Safari a detectar clic */
+    touch-action: manipulation;
+    /* CLAVE: Desactiva zoom doble toque y mejora respuesta */
+    -webkit-tap-highlight-color: transparent;
+    /* Quita el cuadro gris al tocar en iOS */
+
+    /* Transiciones */
+    transition: all 0.3s ease, opacity 1s ease;
+
+    /* Estado inicial */
     opacity: 0;
-  }
+    visibility: hidden;
+}
+
+.audio-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.audio-btn svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    /* Asegura que el click atraviese el SVG */
+}
+
+
+
+/* =======================
+   ANIMACIONES AL SCROLL
+   ======================= */
+
+/* Estado inicial: invisible y desplazado hacia abajo */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    /* Se mueve 50px hacia abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+    /* Optimización de rendimiento */
+}
+
+/* Estado final: visible y en su posición original */
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Opcional: Para que no todos los elementos aparezcan a la vez si están juntos */
+.scroll-animate:nth-child(even) {
+    transition-delay: 0.1s;
 }
 
 
@@ -249,30 +346,50 @@ body p {
    ======================= */
 .hero {
     height: 100vh;
-    /* Ocupa toda la altura de la pantalla */
     min-height: 600px;
-    /* Asegura un tamaño mínimo en pantallas pequeñas */
-    background: url('../src/foto-hero.webp') no-repeat center center;
+    background-image: url('../src/papel-fondo-hero.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.hero-decoration-left {
+    position: absolute;
+    bottom: -40px;
+    left: -30px;
+    width: 60%;
+    height: auto;
+    z-index: 1;
+}
+
+.hero-decoration-right {
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    width: 60%;
+    height: auto;
+    z-index: 1;
 }
 
 .couple-names-mobile {
-    width: 100%;
+    width: 85%;
     max-width: 800px;
     height: auto;
     display: block;
     margin: 0 auto;
     position: relative;
-    top: -100px;
+    z-index: 99;
 }
 
 .couple-names-desktop {
     display: none;
 }
+
 
 /* =======================
       INTRO / NOS CASAMOS 
@@ -305,32 +422,24 @@ p {
 
 .countdown-timer {
     display: grid;
-    /* Esto fuerza exactamente 2 columnas del mismo ancho */
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    /* Espacio entre filas y columnas */
     justify-items: center;
-    /* Centra las cajas en sus huecos */
     max-width: 350px;
-    /* Evita que se estiren demasiado en móvil */
     margin: 0 auto 30px auto;
-    /* Centrado en la pantalla */
 }
 
 .time-box {
     background-color: var(--bg-color);
     border: 1px solid var(--text-color);
     padding: 20px 0;
-    /* Ajuste padding para que no se desborde */
     width: 180px;
     height: 90px;
-    /* Hacemos la caja cuadrada para mejor simetría */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
     margin-bottom: 5px;
-    /* Reducimos margen porque ya tenemos gap */
 }
 
 .time-box span {
@@ -358,7 +467,7 @@ p {
 }
 
 /* =======================
-          CEREMONIA 
+          CEREMONIA
    ======================= */
 .ceremony h2 {
     font-family: var(--font-sans);
@@ -408,7 +517,7 @@ p {
 .ceremony a:hover {
     background-color: var(--text-color);
     /* Fondo oscuro */
-    color: #fff;
+    color: var(--bg-color);
     /* Texto blanco */
     border-color: var(--text-color);
     /* Borde oscuro */
@@ -471,7 +580,7 @@ p {
 .icon-circle {
     width: 60px;
     height: 60px;
-    background: var(--bg-color);
+    background: #ffffff;
     /* Color de fondo de la web para "cortar" la línea */
     border: 1px solid var(--text-color);
     border-radius: 50%;
@@ -514,7 +623,7 @@ p {
     /* Fuente elegante */
     font-size: 1.5rem;
     /* Más grande */
-    color: var(--gold-color);
+    color: var(--accent-color);
     margin-left: 0px;
     font-weight: 400;
     display: inline-block;
@@ -546,8 +655,8 @@ p {
 }
 
 /* =======================
-           FAQ
-   ======================= */
+   FAQ
+======================= */
 .faq h2 {
     font-family: var(--font-sans);
     font-size: 1.375rem;
@@ -557,33 +666,14 @@ p {
     margin-bottom: 30px;
 }
 
-details {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    margin-bottom: 10px;
-    text-align: left;
-    background: #fff;
-    padding: 15px;
-}
-
-.faq-item p {
-    margin-top: 10px;
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: var(--text-color);
-    text-align: left;
-}
-
-.icon-circle {
-    background-color: #fff;
-}
-
-/* Estilo base del item */
+/* Estilo base del details */
 details.faq-item {
     border: 1px solid var(--text-color);
     background: #fff;
     border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
 summary {
@@ -592,40 +682,90 @@ summary {
     font-weight: bold;
     cursor: pointer;
     list-style: none;
+    /* Oculta triángulo nativo */
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
+    padding: 15px;
     position: relative;
     z-index: 10;
 }
 
-/* Icono rotatorio */
+/* Ocultar triángulo nativo en Safari/Chrome */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Icono rotatorio (+) */
 summary::after {
     content: '+';
     font-size: 1.5rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
+    /* Coincide con la duración del cierre */
+    transform-origin: center;
 }
 
 details[open] summary::after {
     transform: rotate(45deg);
-    /* Efecto X */
 }
 
-/* --- ANIMACIÓN FLUIDA --- */
-/* El pseudo-elemento nativo que envuelve el contenido */
-details::details-content {
-    opacity: 0;
-    height: 0;
+/* Estado visual cuando estamos cerrando (JS añade esta clase) */
+details.closing summary::after {
+    transform: rotate(0deg);
+    /* Vuelve a + suavemente */
+}
+
+/* --- ANIMACIÓN GRID (Funciona en Safari/Chrome/Firefox) --- */
+.faq-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-out;
+    /* Duración clave: 0.4s */
+}
+
+/* Estado abierto: expande a 1fr */
+details[open] .faq-content-wrapper {
+    grid-template-rows: 1fr;
+}
+
+/* Estado cerrando (JS): fuerza a 0fr aunque siga [open] */
+details.closing .faq-content-wrapper {
+    grid-template-rows: 0fr;
+}
+
+.faq-content-inner {
     overflow: hidden;
-    /* transition-behavior: allow-discrete es clave para que espere al cerrar */
-    transition: height 0.4s ease, opacity 0.4s ease, content-visibility 0.4s allow-discrete;
 }
 
-/* Estado abierto */
-details[open]::details-content {
+/* Estilos del texto interior */
+.faq-content-inner p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-align: left;
+
+    /* Animación opacidad suave */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Texto visible cuando está abierto */
+details[open] .faq-content-inner p {
     opacity: 1;
-    height: auto;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+/* Texto invisible cuando se está cerrando */
+details.closing .faq-content-inner p {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition-delay: 0s;
 }
 
 
@@ -740,7 +880,7 @@ textarea {
 
 /* Botón de Enviar */
 .btn-submit {
-    background-color: #8B7D6B;
+    background-color: var(--gold-color);
     /* Marrón topo */
     color: white;
     border: none;
@@ -762,7 +902,7 @@ textarea {
 }
 
 .btn-submit:hover {
-    background-color: #7A7063;
+    background-color: var(--accent-color-dos);
 }
 
 /* =======================
@@ -821,6 +961,11 @@ footer {
         display: none;
     }
 
+    .hero-decoration-left,
+    .hero-decoration-right {
+        width: 40%;
+    }
+
     .couple-names-desktop {
         display: block;
 
@@ -836,7 +981,6 @@ footer {
         /* Mantiene la proporción */
         margin: 0 auto;
         position: relative;
-        top: -80px;
     }
 
     .countdown-timer {
@@ -1026,10 +1170,15 @@ footer {
         display: none;
     }
 
+    .hero-decoration-left,
+    .hero-decoration-right {
+        width: 34%;
+    }
+
     .couple-names-desktop {
         display: block;
         /* Crecimiento proporcional controlado */
-        width: 80vw;
+        width: 69vw;
         /* 60% del ancho de la pantalla */
         max-width: 1200px;
         /* Tope máximo para pantallas muy grandes */
