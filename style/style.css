@@ -58,25 +58,29 @@ body p {
    ======================= */
 
 .loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh; /* Dynamic viewport height para iOS */
-  min-height: 100vh; /* Fuerza altura mínima */
-  min-height: -webkit-fill-available; /* Safari antiguo */
-  background-color: var(--bg-color);
-  background-image: url(../src/papel-fondo-hero.webp);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-  overflow: hidden; /* Previene scroll interno */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    /* Dynamic viewport height para iOS */
+    min-height: 100vh;
+    /* Fuerza altura mínima */
+    min-height: -webkit-fill-available;
+    /* Safari antiguo */
+    background-color: var(--bg-color);
+    background-image: url(../src/papel-fondo-hero.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
+    /* Previene scroll interno */
 }
 
 .loading-screen.hidden {
@@ -355,6 +359,36 @@ body p {
     overflow: hidden;
 }
 
+/* Imagen centrada detrás del texto */
+.hero-photo {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(420px, 74vw);
+    aspect-ratio: 3 / 4;
+    /* vertical suave, ajustable */
+    height: auto;
+    object-fit: cover;
+    border-radius: 9999px;
+    overflow: hidden;
+    border: 1px solid rgba(24, 22, 23, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.4;
+    /* Baja la opacidad para que se vea más suave */
+    mix-blend-mode: multiply;
+    /* Opcional: integra la foto con el papel de fondo */
+}
+
+
+/* Asegura que los nombres estén por encima */
+.couple-names-mobile,
+.couple-names-desktop {
+    position: relative;
+    z-index: 99;
+}
+
 .hero-decoration-left {
     position: absolute;
     bottom: -40px;
@@ -418,26 +452,29 @@ p {
 }
 
 .countdown-timer {
-  display: grid;
-  grid-template-columns: repeat(2, 165px); /* Columnas de ancho fijo */
-  gap: 10px;
-  justify-content: center; /* Centra el grid */
-  margin: 0 auto 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 165px);
+    /* Columnas de ancho fijo */
+    gap: 10px;
+    justify-content: center;
+    /* Centra el grid */
+    margin: 0 auto 30px auto;
 }
 
 
 .time-box {
-  background-color: var(--bg-color);
-  border: 1px solid var(--text-color);
-  padding: 20px 0;
-  width: calc(50vw - 30px); /* 50% del ancho de la pantalla menos márgenes */
-  max-width: 165px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  margin-bottom: 5px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    padding: 20px 0;
+    width: calc(50vw - 30px);
+    /* 50% del ancho de la pantalla menos márgenes */
+    max-width: 165px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-bottom: 5px;
 }
 
 
