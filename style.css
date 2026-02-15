@@ -58,27 +58,26 @@ body p {
    ======================= */
 
 .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    /* Dynamic viewport height para iOS */
-    min-height: -webkit-fill-available;
-    /* Fallback para Safari antiguo */
-    background-color: var(--bg-color);
-    background-image: url('../src/papel-fondo-hero.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height para iOS */
+  min-height: 100vh; /* Fuerza altura mínima */
+  min-height: -webkit-fill-available; /* Safari antiguo */
+  background-color: var(--bg-color);
+  background-image: url(../src/papel-fondo-hero.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  overflow: hidden; /* Previene scroll interno */
 }
-
 
 .loading-screen.hidden {
     opacity: 0;
