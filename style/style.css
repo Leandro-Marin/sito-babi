@@ -58,28 +58,25 @@ body p {
    ======================= */
 
 .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    /* AÑADIDO: Color base inmediato mientras carga la imagen */
-    background-color: var(--bg-color);
-    /* O usa un color hexadecimal si prefieres, ej: #F7F1E1 */
-
-    background-image: url('../src/papel-fondo-hero.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* Aseguramos que la transición de salida sea suave */
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height para iOS */
+  min-height: 100vh; /* Fuerza altura mínima */
+  min-height: -webkit-fill-available; /* Safari antiguo */
+  background-color: var(--bg-color);
+  background-image: url(../src/papel-fondo-hero.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  overflow: hidden; /* Previene scroll interno */
 }
 
 .loading-screen.hidden {
@@ -421,26 +418,29 @@ p {
 }
 
 .countdown-timer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    justify-items: center;
-    max-width: 350px;
-    margin: 0 auto 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 165px); /* Columnas de ancho fijo */
+  gap: 10px;
+  justify-content: center; /* Centra el grid */
+  margin: 0 auto 30px auto;
 }
 
+
 .time-box {
-    background-color: var(--bg-color);
-    border: 1px solid var(--text-color);
-    padding: 20px 0;
-    width: 180px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    margin-bottom: 5px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  padding: 20px 0;
+  width: calc(50vw - 30px); /* 50% del ancho de la pantalla menos márgenes */
+  max-width: 165px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }
+
+
 
 .time-box span {
     display: block;
