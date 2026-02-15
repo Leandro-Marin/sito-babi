@@ -418,26 +418,25 @@ p {
 }
 
 .countdown-timer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    justify-items: center;
-    max-width: 350px;
-    margin: 0 auto 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 165px); /* Columnas de ancho fijo */
+  gap: 10px;
+  justify-content: center; /* Centra el grid */
+  margin: 0 auto 30px auto;
 }
 
+
 .time-box {
-    background-color: var(--bg-color);
-    border: 1px solid var(--text-color);
-    padding: 20px 0;
-    width: 100%;
-    max-width: 165px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    margin-bottom: 5px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  padding: 20px 0;
+  width: 165px; /* Cambiado de 100% a fijo */
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }
 
 
